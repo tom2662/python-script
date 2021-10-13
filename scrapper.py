@@ -4,11 +4,15 @@ import time
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 
-options = Options()
-options.add_argument('--headless')
-options.add_argument('--disable-gpu') 
+# options = Options()
+# options.add_argument('--headless')
+# options.add_argument('--disable-gpu')
+chrome_options = Options()
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-dev-shm-usage')
 # driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=options)
-driver = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver', options=options)
+driver = webdriver.Chrome('/usr/lib/chromium-browser/chromedriver',chrome_options=chrome_options)
 driver.get("https://www.lvcodecalc.com/")
 # driver.maximize_window()
 driver.find_element_by_css_selector("input[type='text']").send_keys("DU0211")
